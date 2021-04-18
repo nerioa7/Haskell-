@@ -1,0 +1,68 @@
+
+
+-- **** Element 1
+module Prime(
+ factor_21379681,
+ prime_21379681,
+ primesList_21379681,
+ factorial_21379681,
+)where
+
+-- Line 3-4 is basically getting factors from 1 to number nth
+factor_21379681 :: Int -> [Int]
+factor_21379681 n = [x |x <- [1..n],n `mod` x == 0]
+
+--Line 7-8 is where i specify the bool function checks for True or False
+prime_21379681 :: Int -> Bool
+prime_21379681 n = factor_21379681 n == [1,n]
+
+--Line 17-18 were checking the factor from Line 14 to see if will return the range that is entered 
+primesList_21379681 :: Int -> [Int]
+primesList_21379681 n = [x |x <- [2..n], prime_21379681 x]
+
+-- **** Element 2
+-- Line 23 is the data type for Char 
+-- Line 24 Declaring the the alphabet in a placeholder ch
+-- declaring the data from Int to convert the input into 
+ch :: [Char]
+ch = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+intChar :: Int -> [(Char,Char)]
+intChar x = zip ch (drop x ch ++ take x ch)
+cipher_21379681 :: [Char] -> Int -> [Char]
+cipher_21379681 ys x = [z| n <- ys, (a,z) <- intChar x, n==a]
+
+
+-- **** Element 3
+-- line 5 is declaring the factorial from Int to print out in Integer 
+--Declaring both Line 7,8 as 1
+-- Clarifying the function with the argument nth num to be times by the number until it reaches 1
+-- i.e 3*2*1 == 6
+factorial_21379681 :: Int -> Int
+factorial_21379681 0 = 1
+factorial_21379681 1 = 1
+factorial_21379681 n = n * factorial_21379681 (n-1)
+
+
+
+
+
+-- **** Element 4
+
+module Prime
+(
+    merge_21379681
+)
+where
+merge_21379681 :: Ord a => [a] -> [a] -> [a]
+merge_21379681 xs [] = xs 
+merge_21379681 [] ys = ys
+merge_21379681 (x:xs) (y:ys) | x < y     = x:merge_21379681 xs (y:ys)
+                             | otherwise = y:merge_21379681 (x:xs) ys
+
+
+
+
+
+
+
+
